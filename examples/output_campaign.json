@@ -1,0 +1,216 @@
+{
+  "generated_at": "2026-04-30T14:00:00+00:00",
+  "segments": [
+    {
+      "name": "loyalists",
+      "customer_count": 11,
+      "avg_order_value": 113.12,
+      "avg_orders_per_customer": 12.55,
+      "days_since_last_purchase_median": 7,
+      "top_categories": [
+        "kitchen",
+        "home",
+        "apparel"
+      ],
+      "description": "11 high-engagement customers who purchased recently and repeatedly. Avg 12.5 orders, AOV $113."
+    },
+    {
+      "name": "lapsed",
+      "customer_count": 18,
+      "avg_order_value": 103.64,
+      "avg_orders_per_customer": 4.5,
+      "days_since_last_purchase_median": 117,
+      "top_categories": [
+        "home",
+        "kitchen",
+        "accessories"
+      ],
+      "description": "18 customers with no purchase in 60+ days. Median 117 days since last order."
+    },
+    {
+      "name": "new_onboarding",
+      "customer_count": 21,
+      "avg_order_value": 107.21,
+      "avg_orders_per_customer": 0.9,
+      "days_since_last_purchase_median": null,
+      "top_categories": [
+        "home",
+        "accessories",
+        "kitchen"
+      ],
+      "description": "21 customers who signed up in the last 14 days. Need a welcome flow."
+    }
+  ],
+  "strategy": {
+    "strategies": [
+      {
+        "segment": "loyalists",
+        "campaign_type": "loyalty_reward",
+        "rationale": "High-frequency buyers respond best to early access, not discounts.",
+        "primary_goal": "Drive repeat purchase via insider-feel reward",
+        "recommended_send_time": "Tuesday 10:00 ET"
+      },
+      {
+        "segment": "lapsed",
+        "campaign_type": "win_back_discount",
+        "rationale": "60+ day silence justifies a one-time incentive to re-acquire.",
+        "primary_goal": "Reactivate dormant customers with a softer offer",
+        "recommended_send_time": "Sunday 18:00 ET"
+      },
+      {
+        "segment": "new_onboarding",
+        "campaign_type": "welcome_series",
+        "rationale": "Day-3 of a welcome series introduces brand story before pitching product.",
+        "primary_goal": "Build trust before first transactional ask",
+        "recommended_send_time": "3 days post-signup, 09:00 local"
+      }
+    ]
+  },
+  "content": [
+    {
+      "segment": "loyalists",
+      "campaign_type": "loyalty_reward",
+      "email": {
+        "subject_line": "Early access, just for you",
+        "preview_text": "A first look at the spring collection before it goes live tomorrow.",
+        "body": "Hi {{first_name}},\n\nYou've been with us for a while \u2014 long enough that we wanted to send the spring catalog your way before everyone else.\n\nInside: a few new ceramics, a brass piece we've been quietly perfecting since last fall, and one restock that always sells out.\n\nTake a look. No code needed; the prices you see are yours.\n\nBrowse the collection \u2192"
+      },
+      "sms": {
+        "body": "Hi {{first_name}}, spring catalog is live for you 24h early. {{link}}"
+      },
+      "featured_product_ids": [
+        "P008",
+        "P003"
+      ]
+    },
+    {
+      "segment": "lapsed",
+      "campaign_type": "win_back_discount",
+      "email": {
+        "subject_line": "It's been a while \u2014 15% off, on us",
+        "preview_text": "A small thank-you for coming back. No catch.",
+        "body": "Hi {{first_name}},\n\nWe noticed you haven't been by in a few months, and we'd rather not let that go without saying hello.\n\nUse HEARTH15 at checkout for 15% off anything in the shop through Sunday. The cast iron skillet has been the most-loved thing we make this year \u2014 if you missed it last time, this is the moment.\n\nCome back when you're ready.\n\nShop with HEARTH15 \u2192"
+      },
+      "sms": {
+        "body": "Hi {{first_name}}, 15% off through Sunday with HEARTH15. {{link}}"
+      },
+      "featured_product_ids": [
+        "P004",
+        "P002"
+      ]
+    },
+    {
+      "segment": "new_onboarding",
+      "campaign_type": "welcome_series",
+      "email": {
+        "subject_line": "Where Field & Hearth comes from",
+        "preview_text": "A quick note on why we make what we make.",
+        "body": "Hi {{first_name}},\n\nWelcome in. This is day three of a short welcome series \u2014 no pitch today, just context.\n\nField & Hearth started in a one-room studio in Vermont. We make slow goods for the home: things designed to be used every day for a long time, not replaced next season.\n\nIf you're curious, the journals are where most people start. They're $14, and they last.\n\nRead the full story \u2192"
+      },
+      "sms": {
+        "body": "Hi {{first_name}}, welcome to Field & Hearth. Our story, in 2 mins. {{link}}"
+      },
+      "featured_product_ids": [
+        "P010"
+      ]
+    }
+  ],
+  "ab_tests": [
+    {
+      "segment": "loyalists",
+      "control": {
+        "text": "Early access, just for you",
+        "angle": "personalization"
+      },
+      "variants": [
+        {
+          "text": "Spring drop opens 24h early",
+          "angle": "urgency"
+        },
+        {
+          "text": "A few new things we made",
+          "angle": "curiosity"
+        }
+      ],
+      "winner_selection_method": "stub_bayesian_thompson_sampling",
+      "notes": "Personalization control feels strongest; urgency variant tests scarcity framing."
+    },
+    {
+      "segment": "lapsed",
+      "control": {
+        "text": "It's been a while \u2014 15% off, on us",
+        "angle": "benefit"
+      },
+      "variants": [
+        {
+          "text": "Did we lose you?",
+          "angle": "curiosity"
+        },
+        {
+          "text": "HEARTH15 expires Sunday",
+          "angle": "urgency"
+        }
+      ],
+      "winner_selection_method": "stub_bayesian_thompson_sampling",
+      "notes": null
+    },
+    {
+      "segment": "new_onboarding",
+      "control": {
+        "text": "Where Field & Hearth comes from",
+        "angle": "curiosity"
+      },
+      "variants": [
+        {
+          "text": "A studio in Vermont, day 3",
+          "angle": "personalization"
+        },
+        {
+          "text": "What we mean by slow goods",
+          "angle": "benefit"
+        }
+      ],
+      "winner_selection_method": "stub_bayesian_thompson_sampling",
+      "notes": null
+    }
+  ],
+  "quality": {
+    "scores": [
+      {
+        "segment": "loyalists",
+        "brand_voice": 5,
+        "clarity": 4,
+        "actionability": 4,
+        "overall": 4,
+        "sounds_ai_generated": false,
+        "flags": [],
+        "one_line_verdict": "On-brand, soft sell \u2014 ship."
+      },
+      {
+        "segment": "lapsed",
+        "brand_voice": 4,
+        "clarity": 5,
+        "actionability": 5,
+        "overall": 4,
+        "sounds_ai_generated": false,
+        "flags": [
+          "The discount code copy is fine but the second sentence is slightly long."
+        ],
+        "one_line_verdict": "Strong; trim sentence two and ship."
+      },
+      {
+        "segment": "new_onboarding",
+        "brand_voice": 5,
+        "clarity": 4,
+        "actionability": 3,
+        "overall": 4,
+        "sounds_ai_generated": false,
+        "flags": [
+          "No transactional CTA on day-3 by design \u2014 confirm this matches the welcome flow plan."
+        ],
+        "one_line_verdict": "Brand voice nailed; verify intent before send."
+      }
+    ],
+    "blocking_issues": []
+  }
+}
