@@ -144,10 +144,24 @@ make test               # smoke tests; offline-safe (uses fakes)
 `docker compose up` brings up local Langfuse + the API in tandem if you want the trace
 viewer.
 
-## Deploy (Fly.io)
+## Deploy
 
-The repo ships with a `Dockerfile` + `fly.toml` that runs both processes (Streamlit
-public on 8080, FastAPI internal on 8000) in one machine.
+The repo ships with a `Dockerfile` + a startup script that runs both processes
+(Streamlit on the public `$PORT`, FastAPI internal on 8000) in one container.
+Two ready-made Blueprints:
+
+### Render (recommended for a free public link)
+
+1. Push the repo to your own GitHub.
+2. Sign in at https://dashboard.render.com.
+3. New → Blueprint → pick this repo. Render reads `render.yaml` and provisions
+   the service.
+4. (Optional) Add `ANTHROPIC_API_KEY` and unset `DEMO_MODE` for live generation.
+
+Free plan: 512 MB RAM, sleeps after 15 min idle (~30s cold start). Bump to
+Starter ($7/mo) if you outgrow it.
+
+### Fly.io
 
 ```bash
 brew install flyctl                                  # or curl -L https://fly.io/install.sh | sh

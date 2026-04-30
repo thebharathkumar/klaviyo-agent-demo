@@ -1,0 +1,23 @@
+# Render Blueprint. Deploy via:
+#   1. https://dashboard.render.com → New → Blueprint
+#   2. Pick this repo
+#   3. Render reads this file and provisions the service.
+#
+# Free plan: 512MB RAM, sleeps after 15 min idle (~30s cold start).
+# Bump to "starter" ($7/mo) if you outgrow it.
+
+services:
+  - type: web
+    name: klaviyo-agent-demo
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: claude/klaviyo-agent-demo-4aahZ
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: DEMO_MODE
+        value: "1"
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: ANTHROPIC_MODEL
+        value: claude-haiku-4-5-20251001
