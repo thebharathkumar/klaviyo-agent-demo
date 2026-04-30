@@ -162,6 +162,21 @@ fly deploy
 `auto_stop_machines` is on, so the VM sleeps when idle and wakes on the next request
 (~3-5s cold start). Plenty for a recruiter link.
 
+### Demo mode (no API key required)
+
+Set `DEMO_MODE=1` and the API short-circuits `/generate-campaign` to return the
+committed `examples/output_campaign.json` instead of invoking Claude. The UI, the
+graph topology, and the Langfuse instrumentation are unchanged — the only thing
+swapped is the LLM call. This is what's running on the public deploy:
+
+```bash
+fly secrets set DEMO_MODE=1
+fly deploy
+```
+
+Unset it (`fly secrets unset DEMO_MODE`) and an `ANTHROPIC_API_KEY` to run a real
+campaign generation.
+
 ## Why I built it
 
 Klaviyo's Marketing Agent team is shipping *autonomous agents that create, execute, and

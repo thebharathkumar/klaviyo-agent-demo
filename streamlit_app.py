@@ -17,6 +17,19 @@ st.caption(
     "Backed by Claude + LangGraph; traces emit to Langfuse if configured."
 )
 
+# Detect demo mode (no LLM, returns committed fixture) and surface it in the UI.
+try:
+    health = httpx.get(f"{API_URL}/healthz", timeout=5).json()
+    if health.get("demo_mode"):
+        st.info(
+            "**Demo mode** — this deployed instance returns a committed sample "
+            "campaign so the UI is browsable without an Anthropic key. The graph, "
+            "agents, and tracing are real; clone the repo and unset `DEMO_MODE` "
+            "to run a live campaign generation."
+        )
+except Exception:
+    pass
+
 if "campaign" not in st.session_state:
     st.session_state.campaign = None
 if "error" not in st.session_state:
