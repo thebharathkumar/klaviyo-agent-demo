@@ -14,6 +14,9 @@ COPY . .
 # Generate fixture data at build time so the container is runnable out of the box.
 RUN python -m data.seed
 
+# Streamlit (public) on 8080, FastAPI (internal) on 8000.
+EXPOSE 8080
 EXPOSE 8000
 
-CMD ["uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "8000"]
+RUN chmod +x /app/start.sh
+CMD ["/app/start.sh"]

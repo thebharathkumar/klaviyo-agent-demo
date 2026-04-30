@@ -144,6 +144,24 @@ make test               # smoke tests; offline-safe (uses fakes)
 `docker compose up` brings up local Langfuse + the API in tandem if you want the trace
 viewer.
 
+## Deploy (Fly.io)
+
+The repo ships with a `Dockerfile` + `fly.toml` that runs both processes (Streamlit
+public on 8080, FastAPI internal on 8000) in one machine.
+
+```bash
+brew install flyctl                                  # or curl -L https://fly.io/install.sh | sh
+fly auth login
+fly launch --copy-config --no-deploy                 # accepts the existing fly.toml
+fly secrets set ANTHROPIC_API_KEY=sk-ant-...
+fly secrets set LANGFUSE_PUBLIC_KEY=...   # optional
+fly secrets set LANGFUSE_SECRET_KEY=...   # optional
+fly deploy
+```
+
+`auto_stop_machines` is on, so the VM sleeps when idle and wakes on the next request
+(~3-5s cold start). Plenty for a recruiter link.
+
 ## Why I built it
 
 Klaviyo's Marketing Agent team is shipping *autonomous agents that create, execute, and
