@@ -1,13 +1,14 @@
 # klaviyo-agent-demo
 
 > A LangGraph multi-agent demo of an autonomous marketing campaign generator.
-> Built as a sketch for a Klaviyo Marketing Agent AI Engineer II conversation.
+> Five agents, structured-output validated, traced end-to-end, with an LLM-as-grader gating quality.
 
 ## Why this exists
 
-I'm applying for the Marketing Agent AI Engineer II role at Klaviyo. This is a sketch
-of how I'd approach a small slice of that team's problem space, scoped to make the
-conversation more concrete than a resume bullet.
+A compact, end-to-end demo of how I decompose an agentic workflow: rule-based
+segmentation, an LLM strategist, parallel content generation, and an automated
+quality gate. Scoped small on purpose so every design choice is easy to inspect
+in the trace.
 
 ## What it does
 
@@ -164,11 +165,11 @@ fly deploy
 
 ## Why I built it
 
-Klaviyo's Marketing Agent team is shipping *autonomous agents that create, execute, and
-optimize marketing strategies*. The closest thing in my recent work is a multi-agent
-LangGraph system with an automated quality grader (the Pace eval pipeline), so the
-shortest path to evidence-of-fit was to build a small marketing agent end-to-end with
-the same shape: structured output, traced reasoning, and an LLM-as-grader gating quality.
+Autonomous marketing agents that create, execute, and optimize campaigns are a clear
+near-term application of agentic systems. The closest thing in my recent work is a
+multi-agent LangGraph system with an automated quality grader (the Pace eval
+pipeline), so I built a small marketing agent end-to-end with the same shape:
+structured output, traced reasoning, and an LLM-as-grader gating quality.
 
 The point is the trace, not the polish. Run `make demo`, open the Langfuse UI, and you'll
 see how I think about agent decomposition, contracts, and the eval loop.
