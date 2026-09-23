@@ -3,6 +3,13 @@
 > A LangGraph multi-agent demo of an autonomous marketing campaign generator.
 > Five agents, structured-output validated, traced end-to-end, with an LLM-as-grader gating quality.
 
+<!-- brag:start -->
+<p align="center">
+  <a href="https://github.com/thebharathkumar/klaviyo-agent-demo/blob/HEAD/docs/brag/klaviyo-agent-demo.mp4"><img src="https://raw.githubusercontent.com/thebharathkumar/klaviyo-agent-demo/HEAD/docs/brag/klaviyo-agent-demo.gif" alt="klaviyo-agent-demo: 15-second technical brief" width="100%"></a>
+</p>
+<p align="center"><sub>15-second technical brief. <a href="https://github.com/thebharathkumar/klaviyo-agent-demo/blob/HEAD/docs/brag/klaviyo-agent-demo.mp4">Full MP4 with sound</a> &middot; more at <a href="https://thebharath.co">thebharath.co</a></sub></p>
+<!-- brag:end -->
+
 ## Why this exists
 
 A compact, end-to-end demo of how I decompose an agentic workflow: rule-based
